@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تحدي القراءة</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Tahoma", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff8e7, #ffeef8, #eef7ff);
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .top-bar {
+      background: linear-gradient(to left, #ff7eb3, #ffb347, #7cc6fe, #b388ff);
+      color: white;
+      text-align: center;
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,245,250,0.95));
+      overflow: hidden;
+      border-bottom: 6px double #ff9ecf;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "❀ ❖ ❀ ❖ ❀";
+      position: absolute;
+      color: #ff8ab5;
+      font-size: 26px;
+      opacity: 0.35;
+      letter-spacing: 8px;
+      width: 100%;
+      left: 0;
+    }
+
+    .hero::before {
+      top: 10px;
+    }
+
+    .hero::after {
+      bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      color: #8e44ad;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 0 #ffd6ec;
+    }
+
+    .hero h2 {
+      font-size: 26px;
+      color: #ff6f91;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: 0 auto 25px;
+      font-size: 20px;
+      color: #444;
+    }
+
+    .library-button {
+      display: inline-block;
+      background: linear-gradient(to left, #ff6f91, #ffb347);
+      color: white;
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 40px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 8px 18px rgba(255, 111, 145, 0.35);
+      transition: 0.3s;
+    }
+
+    .library-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 22px rgba(255, 111, 145, 0.45);
+    }
+
+    .section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 35px auto;
+      background-color: rgba(255,255,255,0.95);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 3px dashed #ffd0e6;
+      position: relative;
+    }
+
+    .section::before {
+      content: "✿";
+      position: absolute;
+      top: -14px;
+      right: 20px;
+      background: white;
+      color: #ff7eb3;
+      font-size: 28px;
+      padding: 0 10px;
+    }
+
+    .section h3 {
+      font-size: 30px;
+      color: #5e60ce;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 20px;
+      text-align: center;
+      color: #444;
+    }
+
+    .cards {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto 35px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      border: 2px solid #ffe1f0;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .card-content h4 {
+      font-size: 22px;
+      color: #ff6f91;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 17px;
+      color: #555;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .feature-box {
+      background: linear-gradient(135deg, #fff0f7, #f3f8ff);
+      border: 2px dotted #cda4ff;
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .feature-box h4 {
+      color: #8e44ad;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .feature-box p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    .notice {
+      margin-top: 20px;
+      background: #fff7cc;
+      border-right: 6px solid #f4b400;
+      padding: 18px;
+      border-radius: 14px;
+      font-size: 18px;
+      color: #5c4b00;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 40px;
+      background: linear-gradient(to left, #8e44ad, #5e60ce, #4facfe);
+      color: white;
+      text-align: center;
+      padding: 22px 15px;
+      font-size: 18px;
+      border-top: 6px double #ffd6ec;
+    }
+
+    .footer p {
+      margin: 6px 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .hero p,
+      .section p,
+      .feature-box p {
+        font-size: 18px;
+      }
+
+      .library-button {
+        font-size: 20px;
+        padding: 14px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    ✨ أهلاً بكم في موقع تحدي القراءة ✨
+  </div>
+
+  <section class="hero">
+    <h1>تحدي القراءة</h1>
+    <h2>مدرسة عابل الأساسية المختلطة</h2>
+    <p>
+      القراءة نور العقول، وبوابة المعرفة، وطريق النجاح. 
+      من هنا نبدأ رحلتنا مع الكتب والقصص والملفات التعليمية التي تنمّي الفكر، 
+      وتزيد الثقافة، وتزرع في النفس حب التعلم والاستكشاف.
+    </p>
+
+    <!-- ضعي رابط الدرايف داخل علامة # بين علامتي التنصيص -->
+    <a href="#" class="library-button" target="_blank">الدخول إلى المكتبة</a>
+  </section>
+
+  <section class="section">
+    <h3>عن المكتبة</h3>
+    <p>
+      تم إنشاء هذه المكتبة الإلكترونية لتشجيع الطالبات على القراءة، وتنمية حب الاطلاع،
+      والوصول إلى الكتب والملفات التعليمية بسهولة ويسر. 
+      هدفنا أن تكون القراءة عادة جميلة وممتعة ومصدر إلهام دائم.
+    </p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80" alt="القراءة والمعرفة">
+      <div class="card-content">
+        <h4>القراءة تصنع الوعي</h4>
+        <p>
+          كل كتاب نقرؤه يضيف لنا فكرة جديدة، ويمنحنا أفقًا أوسع ونظرة أجمل إلى الحياة.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=80" alt="مكتبة كتب">
+      <div class="card-content">
+        <h4>المكتبة بيت المعرفة</h4>
+        <p>
+          في المكتبة نلتقي مع أجمل القصص والعلوم والمعلومات التي تثري عقولنا وتغذي طموحنا.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80" alt="أهمية الكتب">
+      <div class="card-content">
+        <h4>الكتاب صديق دائم</h4>
+        <p>
+          الكتاب رفيق جميل، يعلّمنا، يوجّهنا، ويأخذنا في رحلات ممتعة بين المعرفة والخيال.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>أهداف تحدي القراءة</h3>
+    <div class="features">
+      <div class="feature-box">
+        <h4>تعزيز حب القراءة</h4>
+        <p>غرس عادة القراءة اليومية في نفوس الطالبات بأسلوب ممتع وجذاب.</p>
+      </div>
+
+      <div class="feature-box">
+        <h4>تنمية المعرفة</h4>
+        <p>توفير مصادر متنوعة تثري الفكر وتدعم التعلم الذاتي والاستكشاف.</p>
+      </div>
+
+      <div class="feature-box">
+        <h4>استثمار الوقت</h4>
+        <p>تشجيع الطالبات على استثمار أوقاتهن بما ينفع ويزيد من ثقافتهن وخبراتهن.</p>
+      </div>
+
+      <div class="feature-box">
+        <h4>بناء شخصية واعية</h4>
+        <p>المطالعة تصنع شخصية أقوى، وفكرًا أعمق، وطموحًا أكبر نحو المستقبل.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <strong>ملاحظة:</strong>
+      للوصول إلى الكتب والملفات، اضغطي على زر
+      <strong>الدخول إلى المكتبة</strong>
+      الموجود في أعلى الصفحة، وسيتم تحويلك مباشرة إلى رابط المكتبة الإلكتروني.
+    </div>
+  </section>
+
+  <section class="section">
+    <h3>رسالتنا</h3>
+    <p>
+      نؤمن أن كل طالبة تقرأ اليوم، تبني لنفسها غدًا أكثر إشراقًا. 
+      ولذلك جاءت مبادرة <strong>تحدي القراءة</strong> لتجعل من الكتاب رفيقًا، 
+      ومن القراءة متعة، ومن المعرفة أسلوب حياة.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <p><strong>مدرسة عابل الأساسية المختلطة</strong></p>
+    <p><strong>مبرمج الموقع: المهندسة آلاء العيسى</strong></p>
+    <p>جميع الحقوق محفوظة © تحدي القراءة</p>
+  </footer>
+
+</body>
+</html>
